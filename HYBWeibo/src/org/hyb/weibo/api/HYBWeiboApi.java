@@ -99,7 +99,7 @@ public class HYBWeiboApi extends WeiboAPI {
 	public void statusesHome_timeline(long page, RequestListener listener) {
 		WeiboParameters parameters = new WeiboParameters();
 		parameters.add("page", page);
-		parameters.add("count", 1);
+		//parameters.add("count", 1);
 		requestInMainLooper(URLs.statusesHome_timeline, parameters, HTTPMETHOD_GET, listener);
 	}
 }

@@ -1,0 +1,66 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_gray"
+    android:layout_height="match_parent"
+     >
+    <FrameLayout 
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_gray"
+        />
+    <RadioGroup 
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom"
+        android:background="#fafafa"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+        <RadioButton 
+            style="@style/RadioButtonBottomTab"
+            android:id="@+id/rb_home"
+            android:checked="true"
+            android:drawableTop="@drawable/icon_home"
+            android:text="首页"
+            />
+        
+        <RadioButton 
+            style="@style/RadioButtonBottomTab"
+            android:id="@+id/rb_message"
+            
+            android:drawableTop="@drawable/icon_meassage"
+            android:text="消息"
+            />
+        <ImageView 
+            android:id="@+id/iv_add"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:padding="8dp"
+            android:src="@drawable/icon_add"
+            android:background="@drawable/correct_oran_sel"
+            />
+        <RadioButton 
+            style="@style/RadioButtonBottomTab"
+            android:id="@+id/rb_search"
+            
+            android:drawableTop="@drawable/icon_square"
+            android:text="发现"
+            />
+        <RadioButton 
+            style="@style/RadioButtonBottomTab"
+            android:id="@+id/rb_user"
+            
+            android:drawableTop="@drawable/icon_selfinfo"
+            android:text="我"
+            />
+    </RadioGroup>
+</LinearLayout>

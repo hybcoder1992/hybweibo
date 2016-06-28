@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="72dp"
+   
     android:orientation="horizontal" >
-    
-    
     
     <!--  保持纵横比缩放图片,使得图片能完全覆盖ImageView。  -->
     <ImageView 
@@ -14,20 +14,23 @@
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="16dp"
         android:scaleType="centerCrop" 
+        android:background="#ff0000"
         android:src="@drawable/ic_launcher"
         />
     
-    <RelativeLayout 
+    <RelativeLayout
         android:id="@+id/rl_content"
         android:layout_width="match_parent"
         android:layout_height="72dp"
-        android:padding="16dp"
-        >
+        
+        android:padding="16dp" >
+		<!-- 发微博的名字 -->
         <TextView 
             android:id="@+id/tv_subhead"
             style="@style/TextViewSubhead"
             android:text="黄垚波"
             />
+        <!-- 发微博的时间和来源 -->
         <TextView 
             android:id="@+id/tv_caption"
             style="@style/TextViewCaption"
@@ -35,7 +38,6 @@
             android:text="哈哈哈哈"
             android:textColor="@color/txt_gray"
             />
-        
     </RelativeLayout>
-
+ 
 </LinearLayout>

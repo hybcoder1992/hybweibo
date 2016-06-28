@@ -10,7 +10,7 @@ import java.util.Locale;
 import android.text.format.DateFormat;
 
 public class DateUtils {
-//	"created_at": "Wed Jun 17 14:26:24 +0800 2015"
+//	"created_at": "Wed(星期) Jun(月份) 17(日) 14:26:24(时间) +0800(时区) 2015"
 
 	public static final long ONE_MINUTE_MILLIONS = 60 * 1000;
 	public static final long ONE_HOUR_MILLIONS = 60 * ONE_MINUTE_MILLIONS;
@@ -24,7 +24,7 @@ public class DateUtils {
 			Date date = sdf.parse(dateStr);
 			Date curDate = new Date();
 			
-			long durTime = curDate.getTime() - date.getTime();
+			long durTime = curDate.getTime() - date.getTime();//发微博的时间和当前时间做差
 			int dayStatus = calculateDayStatus(date, curDate);
 			
 			if(durTime <= 10 * ONE_MINUTE_MILLIONS) {

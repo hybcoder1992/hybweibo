@@ -8,6 +8,7 @@ import org.hyb.weibo.model.PicUrls;
 import org.hyb.weibo.model.Status;
 import org.hyb.weibo.model.User;
 import org.hyb.weibo.utils.DateUtils;
+import org.hyb.weibo.utils.StringUtils;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -146,17 +147,17 @@ public class StatusAdapter extends BaseAdapter {
 		User user=status.getUser();
 		imageLoader.displayImage(user.getProfile_image_url(), holder.iv_avatar);
 		holder.tv_subhead.setText(user.getName());
-		holder.tv_caption.setText(DateUtils.getShortTime(status.getCreated_at()+" 来自 "+Html.fromHtml(status.getSource())));
-		holder.tv_content.setText(status.getText());
+		holder.tv_caption.setText(DateUtils.getShortTime(status.getCreated_at())+" 来自 "+Html.fromHtml(status.getSource()));
+		holder.tv_content.setText(StringUtils.getWeiboContent(context, holder.tv_content, status.getText()));
 		setImages(status, holder.include_status_image, holder.gv_images, holder.iv_image);
 		Status retweeted_status=status.getRetweeted_status();
 		if(retweeted_status!=null)
 		{
 			User retUser=retweeted_status.getUser();
 			holder.include_retweeted_status.setVisibility(View.VISIBLE);
-			holder.tv_retweeted_content.setText("@"+retUser.getName()+":"+retweeted_status.getText());
+			String retweeted_content="@"+retUser.getName()+":"+retweeted_status.getText();
+			holder.tv_retweeted_content.setText(StringUtils.getWeiboContent(context, holder.tv_retweeted_content, retweeted_content));
 			setImages(retweeted_status, holder.include_retweeted_status_image, holder.gv_retweeted_images, holder.iv_retweeted_image);
-			
 		}
 		else
 			holder.include_retweeted_status.setVisibility(View.GONE);
@@ -187,6 +188,7 @@ public class StatusAdapter extends BaseAdapter {
 			imgContainer.setVisibility(View.VISIBLE);
 			gv_images.setVisibility(View.GONE);
 			iv_image.setVisibility(View.VISIBLE);
+			imageLoader.displayImage(thumnail_pic, iv_image);
 		}
 		else {
 			imgContainer.setVisibility(View.GONE);

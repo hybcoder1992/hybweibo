@@ -18,6 +18,7 @@
 	<include
         android:id="@+id/include_status_image"
         layout="@layout/include_status_image"
+        
         android:visibility="gone" />
 	<include 
 	    android:id="@+id/include_retweeted_status"

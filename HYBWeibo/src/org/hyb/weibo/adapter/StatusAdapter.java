@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hyb.weibo.R;
+import org.hyb.weibo.activity.StatusDetailActivity;
 import org.hyb.weibo.model.PicUrls;
 import org.hyb.weibo.model.Status;
 import org.hyb.weibo.model.User;
@@ -13,8 +14,11 @@ import org.hyb.weibo.utils.StringUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
@@ -143,7 +147,7 @@ public class StatusAdapter extends BaseAdapter {
 		{
 			holder = (ViewHolder) convertView.getTag();
 		}
-		Status status=getItem(position);
+		final Status status=getItem(position);
 		User user=status.getUser();
 		imageLoader.displayImage(user.getProfile_image_url(), holder.iv_avatar);
 		holder.tv_subhead.setText(user.getName());
@@ -169,12 +173,26 @@ public class StatusAdapter extends BaseAdapter {
 		
 		holder.tv_like_bottom.setText(status.getAttitudes_count() == 0 ?
 				"赞" : status.getAttitudes_count() + "");
+		//给每条微博内容添加点击事件,跳转到对应微博的详情页面
+		holder.ll_card_content.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(context,StatusDetailActivity.class);
+				Log.d("hyb", "---onclick---");
+				intent.putExtra("status", status);
+				context.startActivity(intent);
+			}
+		});
+		
 		return convertView;
 	}
 	private void setImages(Status status,FrameLayout imgContainer,GridView gv_images,ImageView iv_image)
 	{
 		ArrayList<PicUrls> pic_urls=status.getPic_urls();
-		String thumnail_pic=status.getThumbnail_pic();
+		//String thumnail_pic=status.getThumbnail_pic();
+		String thumnail_pic=status.getBmiddle_pic();
 		if(pic_urls!=null && pic_urls.size()>1)
 		{
 			imgContainer.setVisibility(View.VISIBLE);

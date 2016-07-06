@@ -7,6 +7,8 @@ import org.hyb.weibo.constants.CommonConstants;
 import org.hyb.weibo.utils.Logger;
 import org.hyb.weibo.utils.ToastUtils;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,6 +21,7 @@ public class BaseActivity extends Activity {
 
 	protected BaseApplication application;
 	protected SharedPreferences sp;
+	protected ImageLoader imgLoader;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -28,6 +31,7 @@ public class BaseActivity extends Activity {
 		
 		application = (BaseApplication) getApplication();
 		sp = getSharedPreferences(CommonConstants.SP_NAME, MODE_PRIVATE);
+		imgLoader=ImageLoader.getInstance();
 	}
 	protected void intent2Activity(Class<? extends Activity> tarActivity) {
 		Intent intent = new Intent(this, tarActivity);

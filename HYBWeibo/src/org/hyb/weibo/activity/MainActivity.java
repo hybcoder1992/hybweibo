@@ -27,13 +27,14 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 		fragmentController.showFragment(0);
 		initView();
 	}
-private void initView()
-{
-	rg_tab=(RadioGroup)findViewById(R.id.rg_tab);
-	iv_add=(ImageView)findViewById(R.id.iv_add);
-	rg_tab.setOnCheckedChangeListener(this);
-	iv_add.setOnClickListener(this);
-}
+	private void initView()
+	{
+		rg_tab=(RadioGroup)findViewById(R.id.rg_tab);
+		iv_add=(ImageView)findViewById(R.id.iv_add);
+		//给radiogroup添加OnCheckedChangeListener
+		rg_tab.setOnCheckedChangeListener(this);
+		iv_add.setOnClickListener(this);
+	}
 	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		// TODO Auto-generated method stub

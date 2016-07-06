@@ -17,11 +17,13 @@ import android.os.Handler;
 import android.os.Looper;
 
 public class HYBWeiboApi extends WeiboAPI {
+	//这个handler实在子线程中创建,但它需要在主线程跟新ui,所有构造函数传入主线程的looper
 	private Handler mainLooperHandler=new Handler(Looper.getMainLooper());
 	public HYBWeiboApi(Oauth2AccessToken oauth2AccessToken) {
 		super(oauth2AccessToken);
 		// TODO Auto-generated constructor stub
 	}
+	
 	public void requestInMainLooper(String url, WeiboParameters params, String httpMethod, final RequestListener listener)
 	{
 		request(url, params, httpMethod, new RequestListener() {
@@ -29,6 +31,7 @@ public class HYBWeiboApi extends WeiboAPI {
 			@Override
 			public void onIOException(final IOException e) {
 				// TODO Auto-generated method stub
+				//遇到ioexception异常时,post到主线程处理
 				mainLooperHandler.post(new Runnable() {
 					
 					@Override
@@ -101,5 +104,19 @@ public class HYBWeiboApi extends WeiboAPI {
 		parameters.add("page", page);
 		//parameters.add("count", 1);
 		requestInMainLooper(URLs.statusesHome_timeline, parameters, HTTPMETHOD_GET, listener);
+	}
+	
+	/**
+	 * 根据微博id返回某条微博的评论列表
+	 * @param id 需要查询的微博id
+	 * @param page 返回结果的页码
+	 * @param listener 
+	 */
+	public void commentsCreate(long id,long page,RequestListener listener)
+	{
+		WeiboParameters parameters = new WeiboParameters();
+		parameters.add("id", id);
+		parameters.add("page", page);
+		requestInMainLooper(URLs.commentsShow, parameters, HTTPMETHOD_GET, listener);
 	}
 }

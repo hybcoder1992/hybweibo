@@ -21,7 +21,9 @@ import android.support.v4.app.FragmentTransaction;
  * 用来控制fragment的跳转
  * */
 public class FragmentController {
+	//把fragment添加到那个容器(layout)
 	private int containerId;
+	//存放所有的fragment
 	private ArrayList<Fragment> fragments;
 	private FragmentManager fm;
 	public static FragmentController controller;
@@ -51,8 +53,11 @@ public class FragmentController {
 		}
 		ft.commit();
 	}
+	//显示对应position的fragment
 	public void showFragment(int position) {
+		//先把所有的fragment隐藏
 		hideFragments();
+		//获取对应position的fragment
 		Fragment fragment = fragments.get(position);
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.show(fragment);

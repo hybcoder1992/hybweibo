@@ -45,6 +45,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.StatusDetailActivity"
+            android:label="@string/title_activity_status_detail"
+            ></activity>
     </application>
 
 </manifest>

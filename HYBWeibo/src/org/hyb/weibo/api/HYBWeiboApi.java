@@ -112,11 +112,23 @@ public class HYBWeiboApi extends WeiboAPI {
 	 * @param page 返回结果的页码
 	 * @param listener 
 	 */
-	public void commentsCreate(long id,long page,RequestListener listener)
+	public void commentsShow(long id,long page,RequestListener listener)
 	{
 		WeiboParameters parameters = new WeiboParameters();
 		parameters.add("id", id);
 		parameters.add("page", page);
 		requestInMainLooper(URLs.commentsShow, parameters, HTTPMETHOD_GET, listener);
+	}
+	/**
+	 * 对一条微博进行评论
+	 * id:需要评论的微博id
+	 * comment:评论的内容
+	 * */
+	public void commentsCreate(long id,String comment,RequestListener listener)
+	{
+		WeiboParameters parameters=new WeiboParameters();
+		parameters.add("id", id);
+		parameters.add("comment", comment);
+		requestInMainLooper(URLs.commentsCreate, parameters, HTTPMETHOD_POST, listener);
 	}
 }

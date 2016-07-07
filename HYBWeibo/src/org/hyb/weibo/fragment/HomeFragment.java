@@ -97,6 +97,7 @@ public class HomeFragment extends BaseFragment{
 		//设置标题栏
 		new TitleBarBuilder(view)
 		.setTitleText("首页")//设置中间标题文字
+		/*
 		.setLeftImage(R.drawable.navigationbar_back_sel)//设置左侧图片按钮
 		.setLeftOnClickListener(new OnClickListener() {//给左侧按钮添加点击事件
 			@Override
@@ -104,7 +105,7 @@ public class HomeFragment extends BaseFragment{
 				// TODO Auto-generated method stub
 				ToastUtils.showToast(activity, "点击了", Toast.LENGTH_SHORT);
 			}
-		});
+		})*/;
 		
 		lv_home=(PullToRefreshListView)view.findViewById(R.id.lv_home);
 		adapter=new StatusAdapter(activity, statuses);//此时适配器中的数据是空的

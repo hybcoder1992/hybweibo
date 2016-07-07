@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hyb.weibo.R;
 import org.hyb.weibo.activity.StatusDetailActivity;
+import org.hyb.weibo.activity.WriteCommentActivity;
 import org.hyb.weibo.model.PicUrls;
 import org.hyb.weibo.model.Status;
 import org.hyb.weibo.model.User;
@@ -180,9 +181,41 @@ public class StatusAdapter extends BaseAdapter {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent=new Intent(context,StatusDetailActivity.class);
-				Log.d("hyb", "---onclick---");
+				//Log.d("hyb", "---onclick---");
 				intent.putExtra("status", status);
 				context.startActivity(intent);
+			}
+		});
+		holder.include_retweeted_status.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(context,StatusDetailActivity.class);
+				//Log.d("hyb", "---onclick---");
+				intent.putExtra("status", status);
+				context.startActivity(intent);
+			}
+		});
+		holder.ll_comment_bottom.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(status.getComments_count()>0)
+				{
+					Intent intent=new Intent(context,StatusDetailActivity.class);
+					intent.putExtra("status", status);
+					intent.putExtra("scroll2Comment", true);
+					context.startActivity(intent);
+				}
+				else{
+					//跳转到写评论的activity
+					Intent intent=new Intent(context,WriteCommentActivity.class);
+					intent.putExtra("status", status);
+					
+					context.startActivity(intent);
+				}
 			}
 		});
 		

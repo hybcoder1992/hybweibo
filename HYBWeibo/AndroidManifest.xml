@@ -48,6 +48,10 @@
         <activity android:name=".activity.StatusDetailActivity"
             android:label="@string/title_activity_status_detail"
             ></activity>
+        <activity 
+            android:name=".activity.WriteCommentActivity"
+            ></activity>
+        
     </application>
 
 </manifest>

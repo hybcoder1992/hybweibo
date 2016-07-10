@@ -82,6 +82,7 @@ private Oauth2AccessToken mAccessToken;
                 
                 Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                 startActivity(intent);
+                LoginActivity.this.finish();
             } else {
             	// 以下几种情况，您会收到 Code：
                 // 1. 当您未在平台上注册的应用程序的包名与签名时；

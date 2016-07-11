@@ -51,7 +51,7 @@
         <activity 
             android:name=".activity.WriteCommentActivity"
             ></activity>
-        
+        <activity android:name=".activity.WriteStatusActivity"></activity>
     </application>
 
 </manifest>

@@ -12,8 +12,7 @@
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:padding="12dp"
-        
-        android:visibility="visible"
+        android:visibility="gone"
         />
     
     <TextView
@@ -25,7 +24,7 @@
         android:paddingRight="16dp"
         android:textColor="@drawable/txtcolor_oran2alpha_sel"
         android:textSize="@dimen/txtsize_subhead"
-        android:visibility="visible" />
+        android:visibility="gone" />
     
     <TextView
         android:id="@+id/titlebar_tv"
@@ -43,7 +42,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:padding="12dp"
-        android:visibility="visible" />
+        android:visibility="gone" />
     
     <TextView
         android:id="@+id/titlebar_tv_right"
@@ -55,7 +54,7 @@
         android:paddingRight="16dp"
         android:textColor="@drawable/txtcolor_oran2alpha_sel"
         android:textSize="@dimen/txtsize_subhead"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <View
         android:layout_width="match_parent"

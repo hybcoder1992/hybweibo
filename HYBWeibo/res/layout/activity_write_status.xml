@@ -42,7 +42,10 @@
                 android:verticalSpacing="8dp"
                 
                 ></org.hyb.weibo.widget.WrapHeightGridView>
-            
+            <include layout="@layout/include_retweeted_status_card"
+                android:id="@+id/include_retweeted_status_card"
+                android:visibility="gone"
+                />
             
         </LinearLayout>
         </ScrollView>
@@ -105,7 +108,7 @@
                 />
             
         </LinearLayout>
-        
+        <!-- 表情面板 -->
     <LinearLayout 
         android:id="@+id/ll_emotion_dashboard"
         android:layout_width="match_parent"

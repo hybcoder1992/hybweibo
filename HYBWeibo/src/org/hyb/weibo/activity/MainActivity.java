@@ -1,14 +1,11 @@
 package org.hyb.weibo.activity;
 
 import org.hyb.weibo.R;
-import org.hyb.weibo.R.layout;
 import org.hyb.weibo.controller.FragmentController;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -51,9 +48,7 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 		case R.id.rb_user:
 			fragmentController.showFragment(3);
 			break;
-		case R.id.iv_add:
-			
-			break;
+		
 		default:
 			break;
 		}
@@ -61,7 +56,15 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
+		switch (v.getId()) {
+		case R.id.iv_add:
+			Intent intent = new Intent(MainActivity.this, WriteStatusActivity.class);
+			startActivityForResult(intent, 110);
+			break;
+
+		default:
+			break;
+		}
 	}
 	
 	

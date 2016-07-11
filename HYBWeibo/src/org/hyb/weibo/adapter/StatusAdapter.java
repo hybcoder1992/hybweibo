@@ -6,6 +6,7 @@ import java.util.List;
 import org.hyb.weibo.R;
 import org.hyb.weibo.activity.StatusDetailActivity;
 import org.hyb.weibo.activity.WriteCommentActivity;
+import org.hyb.weibo.activity.WriteStatusActivity;
 import org.hyb.weibo.model.PicUrls;
 import org.hyb.weibo.model.Status;
 import org.hyb.weibo.model.User;
@@ -174,7 +175,19 @@ public class StatusAdapter extends BaseAdapter {
 		
 		holder.tv_like_bottom.setText(status.getAttitudes_count() == 0 ?
 				"赞" : status.getAttitudes_count() + "");
+		holder.tv_share_bottom.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Log.d("hyb", "转发按钮click");
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(context,WriteStatusActivity.class);
+				intent.putExtra("status", status);
+				context.startActivity(intent);
+			}
+		});
 		//给每条微博内容添加点击事件,跳转到对应微博的详情页面
+		
 		holder.ll_card_content.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -186,6 +199,7 @@ public class StatusAdapter extends BaseAdapter {
 				context.startActivity(intent);
 			}
 		});
+		
 		holder.include_retweeted_status.setOnClickListener(new OnClickListener() {
 			
 			@Override
